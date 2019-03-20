@@ -1,6 +1,7 @@
 <?php
 $title="register";
-require_once "database/connection.php";
+require_once "../database/connection.php";
+
 $message=false;
 if(isset($_POST['register'])){
     $firstName = trim($_POST['first_name']);
@@ -16,7 +17,7 @@ if(isset($_POST['register'])){
         move_uploaded_file($_FILES['files']['tmp_name'],'photo/uploads/profile_photos/'.$new_file_name);
     }
 
-    $sql = 'INSERT INTO register (`first_name`,`last_name`,`email`,`password`,`files`) VALUES (:first_name,:last_name,:email,:password,:files)';
+    $sql = 'INSERT INTO `admin-register` (`first_name`,`last_name`,`email`,`password`,`files`) VALUES (:first_name,:last_name,:email,:password,:files)';
     $stmt=$connection->prepare($sql);
     $stmt->bindParam(':first_name',$firstName);
     $stmt->bindParam(':last_name',$lastName);
@@ -31,7 +32,7 @@ if(isset($_POST['register'])){
     }
 
 }
-require_once 'partials/_header.php'; ?>
+require_once '../partials/_header.php'; ?>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6 ">
@@ -43,7 +44,7 @@ require_once 'partials/_header.php'; ?>
                         </div>
                     <?php endif ; ?>
                     <form class="form-signin" method="post" enctype="multipart/form-data">
-                        <h1 class="h3 mb-3 font-weight-normal text-center">Please Register</h1>
+                        <h1 class="h3 mb-3 font-weight-normal text-center">Admin Register</h1>
                         <label for="firstName" class="lead">First Name :</label>
                         <input type="text" id="firstName" class="form-control" placeholder="First Name" name="first_name" required autofocus>
                         <label for="lastName" class="lead">Last Name :</label>
@@ -62,5 +63,5 @@ require_once 'partials/_header.php'; ?>
         </div>
     </div>
 </div>
-<?php require_once 'partials/_footer.php'; ?>
+<?php require_once '../partials/_footer.php'; ?>
 

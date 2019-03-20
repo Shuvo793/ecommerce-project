@@ -1,4 +1,13 @@
-<?php $title="Dashboard"; ?>
+<?php $title="Dashboard";
+
+session_start();
+if (!isset($_SESSION['id'], $_SESSION['email'], $_SESSION['role']) && $_SESSION['role'] !== 'admin') {
+    header('Location:index.php');
+    exit();
+}
+
+require_once '../database/connection.php';
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -30,7 +39,7 @@
     <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-            <a class="nav-link" href="#">Sign out</a>
+            <a class="nav-link" href="admin-logout.php">Log out</a>
         </li>
     </ul>
 </nav>

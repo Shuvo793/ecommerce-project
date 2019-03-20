@@ -1,6 +1,6 @@
 <?php $title = 'Home'; ?>
 <?php require_once 'partials/_header.php'; ?>
-    <main role="main">
+    <main role="main" >
 
         <section class="jumbotron text-center">
             <div class="container">
