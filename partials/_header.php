@@ -21,7 +21,7 @@
 
   </head>
 
-  <body style="background-color: gainsboro;">
+  <body style="background-color: #f8f9fa;">
 
   <header >
       <div class="collapse bg-dark" id="navbarHeader" >

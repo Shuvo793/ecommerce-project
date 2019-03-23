@@ -1,4 +1,4 @@
- <footer class="text-muted" style="background-color:#343A40;">
+ <footer class="text-muted mt-lg-5" style="background-color:#343A40;">
       <div class="container">
         <p class="float-right">
           <a href="#">Back to top</a>

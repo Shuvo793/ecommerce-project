@@ -46,10 +46,11 @@ require_once "partials/_header.php"?>
                             <label for="inputPassword" class="lead">Password :</label>
                             <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
                             <button class="btn btn-lg btn-primary btn-block" type="submit" name="login">Login</button>
-                            <button class="btn btn-lg btn-primary btn-block"><a href="register.php" class="text-white"style="text-decoration: none;">Creat a new account</a></button>
 
-                            <p class="mt-2 mb-2 text-muted">&copy; 2017-2019</p>
+
                         </form>
+                        <button class="btn btn-lg btn-primary btn-block mt-1"><a href="register.php" class="text-white"style="text-decoration: none;">Creat a new account</a></button>
+                        <p class="mt-2 mb-2 text-muted">&copy; 2017-2019</p>
                     </div>
                 </div>
             </div>

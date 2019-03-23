@@ -25,7 +25,7 @@ if(isset($_POST['register'])){
     $stmt->bindParam(':files',$new_file_name);
     $response=$stmt->execute();
     if($response){
-        $message="success";
+        header('Location:login.php');
     }else{
         $message='unsucess';
     }

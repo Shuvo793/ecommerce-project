@@ -38,7 +38,7 @@
                     <td>Total Price</td>
                     <td>2000</td>
                     <td>
-                        <a href="checkout.php" class="btn btn-success">Checkout</a>
+                        <a href="cheakout.php" class="btn btn-success">Checkout</a>
                     </td>
                 </tr>
                 </tbody>
