@@ -1,7 +1,8 @@
  <footer class="text-muted mt-lg-5" style="background-color:#343A40;">
       <div class="container">
         <p class="float-right">
-          <a href="#">Back to top</a>
+          <button class="btn btn-info"><a href="#" style="color:white;text-decoration: none; font-size:20px;font-weight: bold;"><i class="fas fa-angle-double-up"></i>
+              </a></button>
         </p>
         <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
         <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="#">getting started guide</a>.</p>

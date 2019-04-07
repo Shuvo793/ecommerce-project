@@ -1,4 +1,4 @@
-
+<?php session_start();?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -19,6 +19,8 @@
     <link href="../assets/css/style.css" rel="stylesheet">
 
     <link rel="icon" href="../photo/favicon/favicon.ico">
+      <!--font Awesome for this template in CDN-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
   </head>
 
@@ -31,7 +33,11 @@
                   <div class="col-sm-8 col-md-7 py-4">
                       <h4 class="text-white">About</h4>
                       <p class="text-muted">PPI Ecommerce Project using PHP.Text Marketing For E-Commerce and promotion are very essential for business growth no matter the industry involved. This means of text marketing is highly recommended by top players in this e-commerce industry and it has proven to help boost a lot of businesses.</p>
-                      <button class="btn btn-info"><a href="../login.php" class="text-white" style="text-decoration: none;">Sign In</a></button>
+                      <?php ?>
+
+                          <a href="../logout.php" class="text-white" style="text-decoration: none;">
+                           <?php echo isset($_SESSION['id'])? '<button class="btn btn-danger">Log Out</button>':'<button class="btn btn-info"><a href="../login.php" style="color:white;text-decoration: none;">Sign in</a></button>';?>
+                          </a>
                   </div>
                   <div class="col-sm-4 offset-md-1 py-4">
                       <h4 class="text-white">Menu</h4>
@@ -46,7 +52,8 @@
       <div class="navbar navbar-dark bg-dark shadow-sm">
           <div class="container d-flex justify-content-between">
               <a href="../index.php" class="navbar-brand d-flex align-items-center">
-                  <strong>PPI Ecommerce</strong>
+                  <strong><i class="fas fa-cart-arrow-down"></i>
+                      PPI Ecommerce</strong>
               </a>
 
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"

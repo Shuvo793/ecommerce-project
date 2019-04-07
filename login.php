@@ -13,6 +13,7 @@ if(isset($_POST['login'])){
     $user=$stmt->fetch();
     if($user){
         if(password_verify($password,$user['password'])===true){
+            session_start();
             $_SESSION['id']=$user['id'];
             $_SESSION['email']=$user['email'];
             $_SESSION['role']=$user['role'];

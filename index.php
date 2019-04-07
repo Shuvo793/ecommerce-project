@@ -1,5 +1,5 @@
 <?php $title = 'Home';
-session_start();
+//session_start();
 require_once 'database/connection.php';
 require_once 'partials/_header.php';
 $query='SELECT id,name,slug,image,price FROM products';

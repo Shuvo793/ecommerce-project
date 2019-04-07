@@ -1,6 +1,6 @@
 <?php $title = 'Cart';?>
 <?php
-session_start();
+//session_start();
 require_once 'database/connection.php';
 if(isset($_POST['clear'])){
     unset($_SESSION['cart']);
@@ -62,6 +62,8 @@ if(isset($_POST['add'])){
     }
 }
 $total_price= !empty($cart) ? array_sum(array_column($cart,'total_price')) :0;
+/*header('content-type: application/json');
+echo json_encode($_SESSION['cart']);*/
 ?>
 <?php require_once 'partials/_header.php'; ?>
 <main role="main">
@@ -113,9 +115,11 @@ $total_price= !empty($cart) ? array_sum(array_column($cart,'total_price')) :0;
                     <td>Total Price</td>
                     <td>BDT <?php echo number_format($total_price,2);?></td>
                     <td>
-                        <a href="cheakout.php" class="btn btn-success">Checkout</a>
+                        <form action="cheakout.php" method="post">
+                            <button class="btn btn-success mr-1 float-left" name="cheakout">Checkout</button>
+                        </form>
                         <form action="cart.php" method="post">
-                            <button type="submit" class="btn btn-sm btn-danger" name="clear">[x]</button>
+                            <button type="submit" class="btn btn-danger" name="clear">[x]</button>
                         </form>
                     </td>
                 </tr>
