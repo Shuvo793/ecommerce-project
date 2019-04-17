@@ -1,13 +1,15 @@
 <?php
 $title="register";
+session_start();
 require_once "database/connection.php";
-$message=false;
 if(isset($_POST['register'])){
     $firstName = trim($_POST['first_name']);
     $lastName = trim($_POST['last_name']);
+    $userName = trim($_POST['username']);
     $email = trim(strtolower($_POST['email']));
     $password = trim($_POST['password']);
     $password = password_hash($password, PASSWORD_BCRYPT);
+    $email_varification_token=sha1(time().$email.$userName);
     if(!empty($_FILES['files']['tmp_name'])){
         $name=$_FILES['files']['name'];
         $file_parts=explode('.',$name);
@@ -16,38 +18,49 @@ if(isset($_POST['register'])){
         move_uploaded_file($_FILES['files']['tmp_name'],'photo/uploads/profile_photos/'.$new_file_name);
     }
 
-    $sql = 'INSERT INTO register (`first_name`,`last_name`,`email`,`password`,`files`) VALUES (:first_name,:last_name,:email,:password,:files)';
+    $sql = 'INSERT INTO users (`first_name`,`last_name`,`username`,`email`,`password`,`photo`,`email_varification_token`,`active`) VALUES (:first_name,:last_name,:username,:email,:password,:photo,:email_varification_token,:active)';
     $stmt=$connection->prepare($sql);
     $stmt->bindParam(':first_name',$firstName);
     $stmt->bindParam(':last_name',$lastName);
+    $stmt->bindParam(':username',$userName);
     $stmt->bindParam(':email',$email);
     $stmt->bindParam(':password',$password);
-    $stmt->bindParam(':files',$new_file_name);
+    $stmt->bindParam(':photo',$new_file_name);
+    $stmt->bindParam(':email_varification_token',$email_varification_token);
+    $stmt->bindValue(':active',1);
     $response=$stmt->execute();
     if($response){
-        header('Location:login.php');
-    }else{
-        $message='unsucess';
-    }
+        $_SESSION['type']='success';
+        $_SESSION['message']='Registration Successfully';
 
+    }else{
+        $_SESSION['type']='danger';
+        $_SESSION['message']='Registration Unsuccessfully';
+    }
+    header('Location: register.php');
+    exit();
 }
-require_once 'partials/_header.php'; ?>
+?>
+<?php require_once 'partials/_header.php'; ?>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6 ">
             <div class="card mt-lg-5 mb-lg-5">
                 <div class="card-body">
-                    <?php if ($message): ?>
-                        <div class="alert alert-success">
-                            <?php echo $message; ?>
+                    <?php if (isset($_SESSION['type'],$_SESSION['message'])): ?>
+                        <div class="alert alert-<?php echo $_SESSION['type']?>">
+                            <?php echo $_SESSION['message']; ?>
                         </div>
+                    <?php unset($_SESSION['type'],$_SESSION['message']);?>
                     <?php endif ; ?>
-                    <form class="form-signin" method="post" enctype="multipart/form-data">
+                    <form class="form-signin" method="post" enctype="multipart/form-data" action="">
                         <h1 class="h3 mb-3 font-weight-normal text-center">Please Register</h1>
                         <label for="firstName" class="lead">First Name :</label>
                         <input type="text" id="firstName" class="form-control" placeholder="First Name" name="first_name" required autofocus>
                         <label for="lastName" class="lead">Last Name :</label>
                         <input type="text" id="lastName" class="form-control" placeholder="Last Name" name="last_name" required autofocus>
+                        <label for="inputUsername" class="lead">User Name :</label>
+                        <input type="text" id="inputUsername" class="form-control" placeholder="User name" name="username" required autofocus>
                         <label for="inputEmail" class="lead">Email address :</label>
                         <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email" required autofocus>
                         <label for="inputPassword" class="lead">Password :</label>

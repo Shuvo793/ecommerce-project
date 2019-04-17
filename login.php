@@ -6,7 +6,7 @@ if(isset($_POST['login'])){
     $email=strtolower(trim($_POST['email']));
     $password=trim($_POST['password']);
     require_once 'database/connection.php';
-    $sql='SELECT `id`,`email`,`password`FROM `register` WHERE email=:email';
+    $sql='SELECT `id`,`email`,`password`FROM `users` WHERE email=:email';
     $stmt=$connection->prepare($sql);
     $stmt->bindParam(':email',$email);
     $stmt->execute();

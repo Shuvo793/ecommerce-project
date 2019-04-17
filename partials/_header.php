@@ -1,4 +1,4 @@
-<?php session_start();?>
+<?php /*session_start();*/?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -6,11 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
-
-    <title><?php echo $title ?? "PPI ecommarce"; ?></title>
-
-    <!--<link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/album/">-->
+      <title><?php echo $title ?? "PPI ecommarce"; ?></title>
+      <!--<link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/album/">-->
 
     <!-- Bootstrap core CSS -->
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet">

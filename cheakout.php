@@ -1,5 +1,5 @@
 <?php
-//session_start();
+session_start();
 require_once "database/connection.php";
 if(isset($_POST['continueCheakout'])){
     $firstName=trim($_POST['firstName']);

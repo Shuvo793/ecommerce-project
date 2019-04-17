@@ -1,6 +1,6 @@
 <?php $title = 'Cart';?>
 <?php
-//session_start();
+session_start();
 require_once 'database/connection.php';
 if(isset($_POST['clear'])){
     unset($_SESSION['cart']);
