@@ -30,7 +30,6 @@
                   <div class="col-sm-8 col-md-7 py-4">
                       <h4 class="text-white">About</h4>
                       <p class="text-muted">PPI Ecommerce Project using PHP.Text Marketing For E-Commerce and promotion are very essential for business growth no matter the industry involved. This means of text marketing is highly recommended by top players in this e-commerce industry and it has proven to help boost a lot of businesses.</p>
-                      <?php ?>
 
                           <a href="../logout.php" class="text-white" style="text-decoration: none;">
                            <?php echo isset($_SESSION['id'])? '<button class="btn btn-danger">Log Out</button>':'<button class="btn btn-info"><a href="../login.php" style="color:white;text-decoration: none;">Sign in</a></button>';?>

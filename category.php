@@ -1,3 +1,4 @@
+
 <?php $title = 'Category'; ?>
 <?php require_once 'partials/_header.php'; ?>
 
